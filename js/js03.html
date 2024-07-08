@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문자열</title>
+  </head>
+  <body>
+    <script>
+      /* 문자열 특징 및 연산 */
+      let hi = "안녕하세요";
+      let company = "위니브";
+      console.log(hi + company); // 안녕하세요위니브
+
+      const a = 10;
+      const b = 20;
+      console.log(`a + b = ${a + b}`); // a+b = 30
+      console.log("a + b = ", a + b); // a+b = 30
+      console.log("a + b = " + (a + b)); // a+b = 30
+      console.log("a + b = " + a + b); // a+b = 1020(문자열로 인식)
+
+      /* 문자열 메소드 */
+      const str = "Hello world, Hello weniv";
+      console.log(`----indexOf----`);
+      console.log(str.indexOf("Hello"));
+      console.log(str.indexOf("Hello", 5));
+      console.log(str.indexOf("hello"));
+      console.log(str.lastIndexOf("Hello"));
+      console.log(str.lastIndexOf("Hello", 12));
+      console.log(str.lastIndexOf("hello"));
+
+      console.log(`----includes----`);
+      console.log(str.includes("Hello"));
+      console.log(str.includes("hello"));
+
+      console.log(`----substring----`);
+      console.log(str.substring(0, str.length)); // 종료 인덱스의 앞까지 출력
+
+      console.log(`----slice----`);
+      console.log(str.slice(0, str.indexOf("weniv")));
+
+      console.log(`----substr----`);
+      console.log(str.substr(str.indexOf("weniv"), 2));
+
+      console.log(`----split & replace----`);
+      console.log(str.split(" "));
+      console.log(str.replace(",", "").split(" "));
+      console.log(str.replaceAll("H", "").split(" "));
+      console.log(str.replace(/H/g, "").split(" "));
+      console.log(
+        str.replace(/H/g, "").split(" ") === str.replaceAll("H", "").split(" ")
+      ); // 값은 같지만 동일하지 않음
+      console.log(str.replaceAll("H", "").replace(",", "").split(" "));
+    </script>
+  </body>
+</html>
