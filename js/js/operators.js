@@ -111,12 +111,16 @@ console.log(!!0); // false
 let p = null;
 let q = undefined;
 let s = 12;
+let falsy = "";
 
 console.log(p ?? q ?? s); // 12
 console.log(s ?? p ?? q); // 12
 console.log(p ?? s ?? q); // 12
 console.log(p ?? q); //  undefined
 console.log(q ?? p); //  null
+
+console.log(falsy ?? s); // ""
+console.log(falsy || s); // 12
 
 
 // 옵셔널 체이닝 (?.)
@@ -129,9 +133,9 @@ const obj = {
 };
 
 console.log(obj.age) // undefined
-// console.log(obj.age.number) // error
+console.log(obj.age.number) // error
 console.log(obj.age?.number) // undefined
-// console.log(obj?.hi()); // error
+console.log(obj?.hi()); // error
 console.log(obj.hi?.()) // undefined
 
 // 형 변환
