@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="./js/script.js" defer></script>
+    <style>
+      .click-hello {background-color: royalblue;}
+    </style>
   </head>
   <body>
-    <button id="btn">click me!</button>
-    <script>
-      const button = document.getElementById("btn");
-      const btnFunc = function() {
-        console.log(this)
-      }
-      button.addEventListener("click",function() {
-        console.log(this);
-      });
-    </script>
+    <h1>DOM을 탐색해 봅시다.</h1>
+    <ul>
+      <li id="first-item">DOM 탐색해보기</li>
+      <li>DOM 트리 접근해보기</li>
+      <li>DOM 제어 명령어</li>
+    </ul>
+    <button class="hello-btn">Hello!</button>
+    <!-- <button class="gugudan-btn">Make me More!</button>
+    <ul class="gugudan-ul"></ul> -->
   </body>
 </html>
