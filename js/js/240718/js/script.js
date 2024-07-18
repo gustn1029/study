@@ -10,6 +10,7 @@ selectBtn.addEventListener('click', () => {
 memberList.addEventListener("click", (e)=> {
     if(e.target.nodeName === "BUTTON") {
         selectMember.textContent = `나의 최애 프로그래밍 언어는 ${e.target.textContent} 입니다.`;
+        selectBtn.classList.remove("on");
         memberList.classList.remove("on");
     }
 })
