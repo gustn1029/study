@@ -53,36 +53,37 @@ h1 {
 }
 
 .todo-list {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
+  padding: 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
 }
 
 .todo-list li {
-    padding: 30px;
-    border-radius: 30px;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 6px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 5px rgba(0, 0, 0, 0.1);
 }
 
 .todo-list li p {
-    flex: 1;
+  flex: 1;
 }
 
 .todo-list .delete-btn {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #f43f5e;
-    background-color: white;
-    color: #f43f5e;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #f43f5e;
+  background-color: white;
+  color: #f43f5e;
 }
 
 .delete-btn:hover {
-    color: white;
-    background-color: #f43f5e;
+  color: white;
+  background-color: #f43f5e;
 }
