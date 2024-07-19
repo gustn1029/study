@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const tv = {
+        model: "smart tv",
+        inch: 50,
+        price: 800000,
+        salePercent: 20,
+        sale(discount) {
+            this.salePrice = discount(this.price, this.salePercent);
+        },
+        salePrice: 0
+      };
+
+      const sale = {
+        discount(price, salePercent) {
+          const discountedPrice = price * (1 - salePercent * 0.01);
+          return discountedPrice;
+        },
+      };
+
+      tv.sale(sale.discount);
+      console.log(tv.salePrice);
+
+      // 실습
+      const food = ["사과","바나나","배","오렌지","포도"];
+      function Robot(food){
+        this.food = food;
+        this.random = () => {
+            let index = Math.floor(Math.random() * this.food.length);
+            console.log(this.food[index]);
+        }
+      }
+
+      const food1 = new Robot(food);
+      food1.random();
+    </script>
+  </body>
+</html>
