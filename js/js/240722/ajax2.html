@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let result;
+    function xhrRequest() {
+      const requestObj = new XMLHttpRequest();
+      requestObj.open("GET", "hello.txt");
+      requestObj.onreadystatechange = () => {
+        if (requestObj.readyState === 4 && requestObj.status === 200) {
+          result = requestObj.responseText;
+            document.body.insertAdjacentHTML("beforeend",result);
+        }
+      };
+      requestObj.send();
+    }
+
+    xhrRequest();
+
+    const promise = new Promise((resolve, reject) => {
+      const requestObj = new XMLHttpRequest();
+      requestObj.open("GET", "hello.txt");
+      requestObj.onreadystatechange = () => {
+        if (requestObj.readyState === 4) {
+          if (requestObj.status === 200) {
+            const result = requestObj.responseText;
+            resolve(result);
+          } else {
+            reject("오류가 발생했습니다.");
+          }
+        }
+      };
+      requestObj.send();
+    });
+
+    promise.then((result) => {
+      document.body.insertAdjacentHTML("beforeend", result);
+    })
+    .catch((error) => {
+        alert(error);
+    });
+  </script>
+</html>

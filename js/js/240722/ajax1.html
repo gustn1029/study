@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 데이터 서버 -> 데이터를 서빙해 주는 것
+      let result;
+      function xhrRequest() {
+        const requestObj = new XMLHttpRequest();
+        requestObj.open("GET", "http://test.api.weniv.co.kr/mall");
+        requestObj.onreadystatechange = () => {
+          if (requestObj.readyState === 4 && requestObj.status === 200) {
+            result = requestObj.responseText;
+            console.log(result, "내부"); 
+          }
+        };
+        requestObj.send();
+      }
+
+      xhrRequest();
+      console.log(result, "외부"); 
+    </script>
+  </body>
+</html>
