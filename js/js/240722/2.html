@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class Robot {
+        #password;
+
+        constructor(name, password) {
+            this.name = name;
+            this.#password = password;
+        }
+
+        getPassword() {
+            return this.#password
+        }
+
+        setPassword(pw) {
+            this.#password = pw;
+        }
+       } 
+
+       const robot = new Robot("name",1234);
+       console.log(robot.getPassword()); // 1234
+       robot.setPassword("password1234")
+       console.log(robot.getPassword()); // password1234
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Sausage {
+        constructor(material1, material2) {
+          this.material1 = material1;
+          this.material2 = material2;
+        }
+
+        taste() {
+          console.log(`${this.material1}와(과) ${this.material2} 맛이 납니다.`);
+        }
+      }
+
+      class FiresSausage extends Sausage {
+        taste() {
+          super.taste();
+          console.log(`불맛이 나기 시작합니다.`);
+        }
+      }
+
+      const sausage = new Sausage("소고기", "파");
+      const firesSausage = new FiresSausage("소고기","파");
+
+      sausage.taste();
+      firesSausage.taste();
+    </script>
+  </body>
+</html>

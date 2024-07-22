@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Robot {
+            constructor(name) {
+                this.name = name
+            }
+            sayYourName() {
+                console.log(`나의 이름은 ${this.name} 입니다.`);
+            }
+        }
+
+        const robot = new Robot("name");
+        robot.sayYourName();
+
+        class BabyRobot extends Robot {
+            constructor(name) {
+                super(name);
+            }
+
+            walk() {
+                console.log(`${this.name}이 걷는다.`);
+            }
+        }
+
+        const babyRobot = new BabyRobot("꼬마 로봇");
+        babyRobot.walk();
+    </script>
+</body>
+</html>
