@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const req = new Promise((resolve, reject) => {
+        const requestObj = new XMLHttpRequest();
+        requestObj.open("GET", "https://test.api.weniv.co.kr/mall");
+        requestObj.onreadystatechange = () => {
+          if (requestObj.readyState === 4 && requestObj.status === 200) {
+            const result = requestObj.responseText;
+            resolve(result);
+          } else if (requestObj.readyState === 4 && requestObj.status !== 200) {
+            reject(new Error("에러가 발생했습니다."));
+          }
+        };
+        requestObj.send();
+      });
+
+      const listItem = (id, text) => {
+        const $li = document.createElement("li");
+        const $p = document.createElement("p");
+
+        $li.id = id;
+        $p.textContent = text;
+        $li.append($p);
+
+        return $li;
+      };
+
+      const list = (data) => {
+        const $ul = document.createElement("ul");
+
+        data.forEach((el) => {
+          const li = listItem(el.id, el.productName);
+
+          $ul.appendChild(li);
+        });
+
+        return document.body.appendChild($ul);
+      };
+
+      req
+        .then((res) => {
+          const data = JSON.parse(res);
+          list(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    </script>
+  </body>
+</html>

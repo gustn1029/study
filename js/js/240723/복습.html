@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const requestObj = new XMLHttpRequest();
+      console.log(requestObj.readyState, "선언");
+      let data = [];
+      requestObj.open("GET", "https://test.api.weniv.co.kr/mall");
+      console.log(requestObj.readyState, "url");
+      requestObj.onreadystatechange = () => {
+          console.log(requestObj.readyState, "상태 변경");
+        if (requestObj.readyState === 4 && requestObj.status === 200) {
+          result = requestObj.responseText;
+          data = JSON.parse(result);
+          console.log(data);
+        }
+      };
+      requestObj.send();
+    </script>
+  </body>
+</html>

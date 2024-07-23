@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const listItem = (id, text) => {
+        const $li = document.createElement("li");
+        const $p = document.createElement("p");
+
+        $li.id = id;
+        $p.textContent = text;
+        $li.append($p);
+
+        return $li;
+      };
+
+      const list = (data) => {
+        const $ul = document.createElement("ul");
+
+        data.forEach((el) => {
+          const li = listItem(el.id, el.productName);
+
+          $ul.appendChild(li);
+        });
+
+        return document.body.appendChild($ul);
+      };
+
+      fetch("https://test.api.weniv.co.kr/mall")
+        .then((res) => {
+          return res.json();
+        })
+        .then((json) => {
+          list(json);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+        let i = 1;
+        do {
+            console.log('*'.repeat(i));
+            i++;
+        } while (i <= 5);
+    </script>
+  </body>
+</html>
