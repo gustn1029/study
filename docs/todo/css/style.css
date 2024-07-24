@@ -75,15 +75,34 @@ h1 {
   flex: 1;
 }
 
-.todo-list .delete-btn {
+.todo-list button {
+  display: block;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #f43f5e;
   background-color: white;
+}
+
+.todo-list .delete-btn {
+  border: 1px solid #f43f5e;
   color: #f43f5e;
+}
+
+.todo-list .update-btn {
+  margin-bottom: 10px;
+  border: 1px solid #60a5fa;
+  color: #60a5fa;
 }
 
 .delete-btn:hover {
   color: white;
   background-color: #f43f5e;
+}
+
+.update-btn:hover {
+  color: white;
+  background-color: #60a5fa;
+}
+
+.complete {
+  text-decoration: line-through;
 }
