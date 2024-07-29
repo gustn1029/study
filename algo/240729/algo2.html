@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const linkedList = {
+        head: {
+          data: 12,
+          next: {
+            data: 99,
+            next: {
+              data: 37,
+              next: null,
+            },
+          },
+        },
+      };
+
+      console.log(linkedList["head"]);
+      console.log(linkedList.head);
+      console.log(linkedList.head.next.data);
+    </script>
+  </body>
+</html>
