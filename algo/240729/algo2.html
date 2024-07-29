@@ -7,22 +7,151 @@
   </head>
   <body>
     <script>
-      const linkedList = {
-        head: {
-          data: 12,
-          next: {
-            data: 99,
-            next: {
-              data: 37,
-              next: null,
-            },
-          },
-        },
-      };
+      //   const linkedList = {
+      //     head: {
+      //       data: 12,
+      //       next: {
+      //         data: 99,
+      //         next: {
+      //           data: 37,
+      //           next: null,
+      //         },
+      //       },
+      //     },
+      //   };
 
-      console.log(linkedList["head"]);
-      console.log(linkedList.head);
-      console.log(linkedList.head.next.data);
+      //   console.log(linkedList["head"]);
+      //   console.log(linkedList.head);
+      //   console.log(linkedList.head.next.data);
+
+      //////////////////////////////////////////
+      // #### 2.2.2.2 step2
+      // object로 linked list를 구현합니다.
+      // 다만 계층적 구조를 분리해 깔끔하게 만듭니다.
+      //   let linkedList2 = { head: null };
+
+      //   let node1 = { data: 12, next: null };
+      //   let node2 = { data: 99, next: null };
+      //   let node3 = { data: 37, next: null };
+
+      //   node1.next = node2;
+      //   node2.next = node3;
+      //   linkedList2.head = node1;
+
+      //   console.log(linkedList["head"]);
+      //   console.log(linkedList.head.next.data);
+      //   console.log(linkedList.head.next.next.data);
+
+      //////////////////////////////////////////
+      // #### 2.2.2.3 step3
+      // object로 linked list를 구현합니다.
+      // 순회
+      //   let linkedList3 = {head: null};
+
+      //   let node1 = { data: 12, next: null };
+      //   let node2 = { data: 99, next: null };
+      //   let node3 = { data: 37, next: null };
+      //   let node4 = { data: 30, next: null };
+      //   let node5 = { data: 40, next: null };
+
+      //   node1.next = node2;
+      //   node2.next = node3;
+      //   node3.next = node4;
+      //   node4.next = node5;
+      //   linkedList3.head = node1;
+
+      //   let current = linkedList3.head;
+      //   while (current) {
+      //     console.log(current.data);
+      //     current = current.next;
+      //   }
+      //////////////////////////////////////////
+      // #### 2.2.2.4 step4
+      // object로 linked list를 구현합니다.
+      // search 40을 찾아야 됨
+      let linkedList = { head: null };
+      let node1 = { data: 10, next: null };
+      let node2 = { data: 20, next: null };
+      let node3 = { data: 30, next: null };
+      let node4 = { data: 40, next: null };
+      let node5 = { data: 50, next: null };
+
+      node1.next = node2;
+      node2.next = node3;
+      node3.next = node4;
+      node4.next = node5;
+
+      linkedList.head = node1;
+
+      let index = 0;
+      let current = linkedList.head;
+      while (current) {
+        console.log(current.data);
+        if (current.data === 40) {
+          console.log(index);
+          break;
+        }
+        index++;
+        current = current.next;
+      }
+
+      class Node {
+        constructor(data) {
+          this.data = data;
+          this.next = null;
+        }
+      }
+
+      class LinkedList {
+        constructor() {
+          let init = new Node("init");
+          this.head = init;
+          this.tail = init;
+          this.length = 0;
+        }
+
+        push(data) {
+          let newNode = new Node(data);
+          this.tail.next = newNode;
+          this.tail = newNode;
+          this.length++;
+        }
+
+        toString() {
+          // this.head가 init이기 때문에
+          let current = this.head.next;
+          let result = "";
+          while (current) {
+            result += `${current.data}, `;
+            current = current.next;
+          }
+          return `<${result.slice(0, -2)}>`;
+        }
+
+        insert(index, data) {
+            console.log(this.head.next);
+          let current = this.head.next;
+          for (let i = 0; i < index - 1; i++) {
+            current = current.next;
+          }
+          let newNode = new Node(data);
+          newNode.next = current.next;
+          current.next = newNode;
+          this.length++;
+        }
+      }
+
+      const l = new LinkedList();
+      l.push(10);
+      l.push(20);
+      l.push(30);
+      l.push(40);
+      l.insert(2, 100);
+      console.log(l);
+      console.log(l.length);
+      console.log(l.toString());
+      l.insert(2, 22);
+      console.log(l.toString());
     </script>
   </body>
 </html>
