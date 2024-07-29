@@ -7,6 +7,27 @@
   </head>
   <body>
     <script>
+      function solution(data) {
+        let stack = [];
+        let sandwichCount = 0;
+        const sandwich = [1, 2, 3, 4, 1];
+
+        for (let ingredient of data) {
+          stack.push(ingredient);
+
+          if (stack.length >= sandwich.length) {
+            if (stack.slice(-sandwich.length).join("") === sandwich.join("")) {
+              stack.slice(0, -sandwich.length);
+              sandwichCount++;
+            }
+          }
+        }
+
+        return sandwichCount;
+      }
+
+      const data = [1, 1, 1, 2, 3, 4, 1, 2, 3, 4, 1];
+      solution(data);
     </script>
   </body>
 </html>
