@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const url = "https://eduapi.weniv.co.kr";
+      let id = "";
+      const $button = document.createElement("button");
+      const $delButton = document.createElement("button");
+      const fetchData = async () => {
+        const res = await fetch(`${url}/50/blog`);
+        if (res.ok) {
+          const json = await res.json();
+          const $div = json
+            .map((el) => {
+              id = json[0]._id;
+
+              if(el._id === undefined) {
+                return;
+              }
+
+              return `<div>
+                        <figure>
+                            <img src="${url}/${el.thumbnail}" alt="${el.title}" style="width:100%;" />
+                            <figcaption>${el.title}</figcaption>
+                        </figure>
+                    </div>`;
+            })
+            .join("");
+          document.body.insertAdjacentHTML("beforeend", $div);
+        } else {
+          const result = console.error(res.status, "에러가 발생했습니다.");
+          return result;
+        }
+      };
+
+      const updateBlogPostTitle = async (id, title, content) => {
+        const res = await fetch(`${url}/50/blog/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            title: title,
+            content: content,
+          }),
+        });
+
+        if (res.ok) {
+        //   return fetchData();
+        } else {
+          const result = console.error(res.status, "에러가 발생했습니다.");
+          return result;
+        }
+      };
+
+      const deleteBlog = async (id) => {
+        await fetch(`${url}/50/blog/${id}`, {
+            method: "DELETE"
+        });
+      }
+
+      fetchData();
+      $button.textContent = "수정하기";
+      $delButton.textContent = "삭제하기";
+      document.body.appendChild($button);
+      document.body.appendChild($delButton);
+      $button.addEventListener(
+        "click",
+        async () => await updateBlogPostTitle(1, "타이틀 바꾸기", "content update")
+      );
+      $delButton.addEventListener(
+        "click",
+        async () => await deleteBlog(1)
+      );
+    </script>
+  </body>
+</html>
