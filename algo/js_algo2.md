@@ -1239,9 +1239,9 @@ list.push(8);
 list.push(1);
 ```
 
+- 트리의 class 구현 - 1 (데이터 추가)
+  - 완벽한 트리를 구현하는데 목표가 있지 않습니다.
 
-* 트리의 class 구현 - 1 (데이터 추가)
-    * 완벽한 트리를 구현하는데 목표가 있지 않습니다.
 ```js
 class Node {
   constructor(data) {
@@ -1252,42 +1252,42 @@ class Node {
 }
 
 class Tree {
-    constructor(data){
-        this.init = new Node(data);
-        this.root = this.init;
-        this.length = 0; // 노드의 갯수
-    }
+  constructor(data) {
+    this.init = new Node(data);
+    this.root = this.init;
+    this.length = 0; // 노드의 갯수
+  }
 
-    add(data){
-        let newNode = new Node(data);
-        let current = this.root;
-        while (current) {
-            if (data == current.data) {
-                // 들어온 값이 이미 존재하는 값이면 추가하지 않습니다.
-                return;
-            } else if (data < current.data) {
-                // 왼쪽으로 이동해야 합니다.
-                // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
-                // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
-                if (!current.left) {
-                    current.left = newNode;
-                    this.length++;
-                    return;
-                }
-                current = current.left;
-            } else if (data > current.data) {
-                // 오른쪽으로 이동해야 합니다.
-                // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
-                // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
-                if (!current.right) {
-                    current.right = newNode;
-                    this.length++;
-                    return;
-                }
-                current = current.right;
-            }
+  add(data) {
+    let newNode = new Node(data);
+    let current = this.root;
+    while (current) {
+      if (data == current.data) {
+        // 들어온 값이 이미 존재하는 값이면 추가하지 않습니다.
+        return;
+      } else if (data < current.data) {
+        // 왼쪽으로 이동해야 합니다.
+        // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+        // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
+        if (!current.left) {
+          current.left = newNode;
+          this.length++;
+          return;
         }
+        current = current.left;
+      } else if (data > current.data) {
+        // 오른쪽으로 이동해야 합니다.
+        // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+        // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
+        if (!current.right) {
+          current.right = newNode;
+          this.length++;
+          return;
+        }
+        current = current.right;
+      }
     }
+  }
 }
 
 let t = new Tree(5);
@@ -1298,18 +1298,19 @@ t.add(4);
 t.add(6);
 t.add(9);
 
-t.root.data
-5
-t.root.left.data
-3
-t.root.right.data
-8
-t.root.left.left.data
-1
+t.root.data;
+5;
+t.root.left.data;
+3;
+t.root.right.data;
+8;
+t.root.left.left.data;
+1;
 ```
 
-* 트리의 class 구현 - 2 (트리의 순회)
-    * 완벽한 트리를 구현하는데 목표가 있지 않습니다.
+- 트리의 class 구현 - 2 (트리의 순회)
+  - 완벽한 트리를 구현하는데 목표가 있지 않습니다.
+
 ```js
 class Node {
   constructor(data) {
@@ -1320,85 +1321,85 @@ class Node {
 }
 
 class Tree {
-    constructor(data){
-        this.init = new Node(data);
-        this.root = this.init;
-        this.length = 0; // 노드의 갯수
-    }
+  constructor(data) {
+    this.init = new Node(data);
+    this.root = this.init;
+    this.length = 0; // 노드의 갯수
+  }
 
-    add(data){
-        let newNode = new Node(data);
-        let current = this.root;
-        while (current) {
-            if (data == current.data) {
-                // 들어온 값이 이미 존재하는 값이면 추가하지 않습니다.
-                return;
-            } else if (data < current.data) {
-                // 왼쪽으로 이동해야 합니다.
-                // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
-                // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
-                if (!current.left) {
-                    current.left = newNode;
-                    this.length++;
-                    return;
-                }
-                current = current.left;
-            } else if (data > current.data) {
-                // 오른쪽으로 이동해야 합니다.
-                // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
-                // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
-                if (!current.right) {
-                    current.right = newNode;
-                    this.length++;
-                    return;
-                }
-                current = current.right;
-            }
+  add(data) {
+    let newNode = new Node(data);
+    let current = this.root;
+    while (current) {
+      if (data == current.data) {
+        // 들어온 값이 이미 존재하는 값이면 추가하지 않습니다.
+        return;
+      } else if (data < current.data) {
+        // 왼쪽으로 이동해야 합니다.
+        // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+        // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
+        if (!current.left) {
+          current.left = newNode;
+          this.length++;
+          return;
         }
-    }
-
-    // 깊스너큐
-    DFS(){
-        // 깊이우선탐색, DFS(Depth First Search)
-        // Stack 이용
-
-        let result = []; // 방문경로
-        let stack = [this.root];
-
-        while (stack.length !== 0) {
-            let current = stack.pop();
-            if (current.right) {
-                stack.push(current.right)
-            };
-            if (current.left) {
-                stack.push(current.left)
-            };
-            result.push(current.data);
+        current = current.left;
+      } else if (data > current.data) {
+        // 오른쪽으로 이동해야 합니다.
+        // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+        // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
+        if (!current.right) {
+          current.right = newNode;
+          this.length++;
+          return;
         }
+        current = current.right;
+      }
+    }
+  }
 
-        return result;
+  // 깊스너큐
+  DFS() {
+    // 깊이우선탐색, DFS(Depth First Search)
+    // Stack 이용
+
+    let result = []; // 방문경로
+    let stack = [this.root];
+
+    while (stack.length !== 0) {
+      let current = stack.pop();
+      if (current.right) {
+        stack.push(current.right);
+      }
+      if (current.left) {
+        stack.push(current.left);
+      }
+      result.push(current.data);
     }
 
-    BFS(){
-        // 너비우선탐색, BFS(Breadth First Search)
-        // Queue 이용
+    return result;
+  }
 
-        let result = []; // 방문경로
-        let queue = [this.root];
+  BFS() {
+    // 너비우선탐색, BFS(Breadth First Search)
+    // Queue 이용
 
-        while (queue.length !== 0) {
-            let current = queue.shift();
-            if (current.right) {
-                queue.push(current.right)
-            };
-            if (current.left) {
-                queue.push(current.left)
-            };
-            result.push(current.data);
-        }
+    let result = []; // 방문경로
+    let queue = [this.root];
 
-        return result;
+    while (queue.length !== 0) {
+      let current = queue.shift();
+      if (current.right) {
+        queue.push(current.right);
+      }
+      if (current.left) {
+        queue.push(current.left);
+      }
+      result.push(current.data);
     }
+
+    return result;
+  }
 }
 
 let t = new Tree(5);
@@ -1414,19 +1415,21 @@ t.BFS();
 ```
 
 ## 2.4 정렬 알고리즘
+
 - 재미있는 사실(재미없을 수도 있습니다. 사례를 말씀드릴게요.)
-    - JavaScript의 Array의 sort는 알고리즘이 고정이 아닙니다. 각 브라우저마다(벤더사마다) 다른 sort를 사용하고 있어서 같은 값이면 브라우저마다 보여지는 화면이 다를 수 있습니다.
-    - Google이 Chrome 70 이전에 개수에 따라 다른 알고리즘을 혼합하는 정렬을 사용했다가(InsertionSort & QuickSort 사용) 얼마전에(18년도에) Timsort로 변경했습니다.
-    - 정렬 알고리즘 중에서 가장 인기있는 알고리즘은 병합정렬(존 폰 노이만 제작)이었습니다.
-    - Python에서 시작된 Timsort로(팀 피터스) 대동단결하고 있는 모양세입니다. Python 만세!
-    - Timsort는 삽입정렬과 병합정렬을 적절히 조합한 것이고, 2002년도에 Python을 위해 C로 구현되었습니다.
-    - 정렬 알고리즘 3대장 비교(Bset, Worst)
-        - 병합 정렬 : nlogn, nlogn
-        - 퀵 정렬 : nlogn, n\*\*2
-        - 팀소트 : n, nlogn
+  - JavaScript의 Array의 sort는 알고리즘이 고정이 아닙니다. 각 브라우저마다(벤더사마다) 다른 sort를 사용하고 있어서 같은 값이면 브라우저마다 보여지는 화면이 다를 수 있습니다.
+  - Google이 Chrome 70 이전에 개수에 따라 다른 알고리즘을 혼합하는 정렬을 사용했다가(InsertionSort & QuickSort 사용) 얼마전에(18년도에) Timsort로 변경했습니다.
+  - 정렬 알고리즘 중에서 가장 인기있는 알고리즘은 병합정렬(존 폰 노이만 제작)이었습니다.
+  - Python에서 시작된 Timsort로(팀 피터스) 대동단결하고 있는 모양세입니다. Python 만세!
+  - Timsort는 삽입정렬과 병합정렬을 적절히 조합한 것이고, 2002년도에 Python을 위해 C로 구현되었습니다.
+  - 정렬 알고리즘 3대장 비교(Bset, Worst)
+    - 병합 정렬 : nlogn, nlogn
+    - 퀵 정렬 : nlogn, n\*\*2
+    - 팀소트 : n, nlogn
 - 정렬 알고리즘을 작성할 때 주의사항
 
 ### 2.4.1 공간 복잡도와 시간 복잡도
+
 - 시간 복잡도: 얼마나 많은 시간이 걸렸는지
 - 공간 복잡도: 얼마나 많은 공간이 필요했는지
 
@@ -1434,26 +1437,26 @@ t.BFS();
 // 시간 복잡도 계산
 // O(n)
 const n = 10;
-for (let i = 0; i < n; i++){
-    console.log(i);
+for (let i = 0; i < n; i++) {
+  console.log(i);
 }
 
 // O(n^2)
 const n = 10;
-for (let i = 0; i < n; i++){
-    for (let j = 0; j < n; j++){
-        console.log(i, j);
-    }
+for (let i = 0; i < n; i++) {
+  for (let j = 0; j < n; j++) {
+    console.log(i, j);
+  }
 }
 
 // O(n^3)
 const n = 10;
-for (let i = 0; i < n; i++){
-    for (let j = 0; j < n; j++){
-        for (let k = 0; k < n; k++){
-            console.log(i, j, k);
-        }
+for (let i = 0; i < n; i++) {
+  for (let j = 0; j < n; j++) {
+    for (let k = 0; k < n; k++) {
+      console.log(i, j, k);
     }
+  }
 }
 
 // O(n)
@@ -1461,17 +1464,19 @@ for (let i = 0; i < n; i++){
 // O(3n) => O(n)
 // 상수는 항상 무시됩니다.
 const n = 10;
-for (let i = 0; i < n; i++){
-    for (let j = 0; j < 3; j++){
-        console.log(i, j);
-    }
+for (let i = 0; i < n; i++) {
+  for (let j = 0; j < 3; j++) {
+    console.log(i, j);
+  }
 }
 ```
+
 ### 2.4.2 선택정렬
 
-* 선택정렬은 가장 작은 것을 선택해서 앞으로 보내는 정렬입니다.
+- 선택정렬은 가장 작은 것을 선택해서 앞으로 보내는 정렬입니다.
 
-- step 1
+* step 1
+
 ```
 전 = [199, 22, 33, 12, 32, 64, 72, 222, 233]
 후 = []
@@ -1512,10 +1517,10 @@ let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 let 정렬된배열 = [];
 // let 길이 = 입력값.length // 가변될 수 있는 값을 미리 변수로 선언하는 방식을 사용할 수도 있습니다.
 while (!!입력값.toString()) {
-    // !! 안해주어도 됩니다.
-    let 최솟값 = Math.min(...입력값);
-    정렬된배열.push(최솟값);
-    입력값.splice(입력값.indexOf(최솟값), 1);
+  // !! 안해주어도 됩니다.
+  let 최솟값 = Math.min(...입력값);
+  정렬된배열.push(최솟값);
+  입력값.splice(입력값.indexOf(최솟값), 1);
 }
 
 console.log(정렬된배열);
@@ -1525,115 +1530,122 @@ console.log(정렬된배열);
 let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 
 function selectionSort(arr) {
-    // [199, 22, 33, 12, 32, 64, 72, 222, 233]
-    // 첫번째 순회
-    // min_index = 0
-    // 두번째 순회
-    // arr[min_index] > arr[j]
-    // arr[0] > arr[1] -> min_index = 1
-    // arr[1] > arr[2] -> min_index = 1
-    // arr[1] > arr[3] -> min_index = 3
-    // arr[3] > arr[4] -> min_index = 3
-    // arr[3] > arr[5] -> min_index = 3
-    // arr[3] > arr[6] -> min_index = 3
-    // arr[3] > arr[7] -> min_index = 3
-    // arr[0](199) <-> arr[3](12)
-    // 순회가 돌면 돌 수록 최솟값이 앞에 배치되게 된다.
-    for (let i = 0; i < arr.length; i++) {
-        let min_index = i;
-        for (let j = i + 1; j < arr.length; j++) {
-            if (arr[min_index] > arr[j]) {
-                min_index = j;
-            }
-        }
-        let temp = arr[min_index];
-        arr[min_index] = arr[i];
-        arr[i] = temp;
+  // [199, 22, 33, 12, 32, 64, 72, 222, 233]
+  // 첫번째 순회
+  // min_index = 0
+  // 두번째 순회
+  // arr[min_index] > arr[j]
+  // arr[0] > arr[1] -> min_index = 1
+  // arr[1] > arr[2] -> min_index = 1
+  // arr[1] > arr[3] -> min_index = 3
+  // arr[3] > arr[4] -> min_index = 3
+  // arr[3] > arr[5] -> min_index = 3
+  // arr[3] > arr[6] -> min_index = 3
+  // arr[3] > arr[7] -> min_index = 3
+  // arr[0](199) <-> arr[3](12)
+  // 순회가 돌면 돌 수록 최솟값이 앞에 배치되게 된다.
+  for (let i = 0; i < arr.length; i++) {
+    let min_index = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[min_index] > arr[j]) {
+        min_index = j;
+      }
     }
-    return arr;
+    let temp = arr[min_index];
+    arr[min_index] = arr[i];
+    arr[i] = temp;
+  }
+  return arr;
 }
 
 console.log(selectionSort(입력값));
 ```
 
 ### 2.4.3 삽입정렬
-* 삽입정렬은 앞에서부터 차례대로 삽입될 위치를 찾아 끼어들기 하는 정렬입니다.
 
-- step 1
+- 삽입정렬은 앞에서부터 차례대로 삽입될 위치를 찾아 끼어들기 하는 정렬입니다.
+
+* step 1
+
 ```
 전 = [199, 22, 33, 12, 32, 64, 72, 222, 233]
 후 = []
 ```
 
 - step 2
+
 ```
 전 = [22, 33, 12, 32, 64, 72, 222, 233]
 후 = [199]
 ```
 
 - step 3
+
 ```
 전 = [33, 12, 32, 64, 72, 222, 233]
 후 = [22, 199]
 ```
 
 - step 4
+
 ```
 전 = [12, 32, 64, 72, 222, 233]
 후 = [22, 33, 199] // 이렇게 껴들려면 껴들 수 있는 index를 알아내야 합니다.
 ```
 
 - step 5
+
 ```
 전 = [32, 64, 72, 222, 233]
 후 = [12, 22, 33, 199]
 ```
 
-* 구현코드
+- 구현코드
+
 ```js
 let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 let 정렬된배열 = [];
 let 배열의길이 = 입력값.length;
 
 function 삽입값이_들어갈_인덱스(정렬된배열, 삽입값) {
-    for (const i in 정렬된배열) {
-        if (삽입값 < 정렬된배열[i]) {
-            return i;
-        }
+  for (const i in 정렬된배열) {
+    if (삽입값 < 정렬된배열[i]) {
+      return i;
     }
-    return 정렬된배열.length;
+  }
+  return 정렬된배열.length;
 }
 
 for (let i = 0; i < 배열의길이; i++) {
-    let 삽입값 = 입력값.shift();
-    let 인덱스 = 삽입값이_들어갈_인덱스(정렬된배열, 삽입값);
-    정렬된배열.splice(인덱스, 0, 삽입값);
+  let 삽입값 = 입력값.shift();
+  let 인덱스 = 삽입값이_들어갈_인덱스(정렬된배열, 삽입값);
+  정렬된배열.splice(인덱스, 0, 삽입값);
 }
 
 console.log(정렬된배열);
 
 // 참고만 하고 가도록 하겠습니다.
 function insertIndex(sorted_arr, value) {
-    //삽입될 위치를 찾는 함수
-    for (let i in sorted_arr) {
-        if (value < sorted_arr[i]) {
-            return i;
-        }
+  //삽입될 위치를 찾는 함수
+  for (let i in sorted_arr) {
+    if (value < sorted_arr[i]) {
+      return i;
     }
-    return sorted_arr.length;
+  }
+  return sorted_arr.length;
 }
 
 function insertSort(arr) {
-    let sorted_arr = [];
+  let sorted_arr = [];
 
-    while (arr.length != 0) {
-        let value = arr.shift();
-        //삽입될 위치를 반환함
-        let index = insertIndex(sorted_arr, value);
-        //삽입될 위치에 값을 반환
-        sorted_arr.splice(index, 0, value);
-    }
-    return sorted_arr;
+  while (arr.length != 0) {
+    let value = arr.shift();
+    //삽입될 위치를 반환함
+    let index = insertIndex(sorted_arr, value);
+    //삽입될 위치에 값을 반환
+    sorted_arr.splice(index, 0, value);
+  }
+  return sorted_arr;
 }
 const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 console.log(insertSort(arr));
@@ -1643,38 +1655,40 @@ let 정렬된배열 = [];
 let 배열의길이 = 입력값.length;
 
 function insertIndex(sorted_arr, value) {
-    //삽입될 위치를 찾는 함수
-    for (let i in sorted_arr) {
-        if (value < sorted_arr[i]) {
-            return i;
-        }
+  //삽입될 위치를 찾는 함수
+  for (let i in sorted_arr) {
+    if (value < sorted_arr[i]) {
+      return i;
     }
-    return sorted_arr.length;
+  }
+  return sorted_arr.length;
 }
 
 function insertSort(arr) {
-    let sorted_arr = [];
+  let sorted_arr = [];
 
-    while (arr.length != 0) {
-        let [value, ...arr2] = arr;
-        arr = arr2;
-        //삽입될 위치를 반환함
-        let index = insertIndex(sorted_arr, value);
-        //삽입될 위치에 값을 반환
-        sorted_arr.splice(index, 0, value);
-    }
-    return sorted_arr;
+  while (arr.length != 0) {
+    let [value, ...arr2] = arr;
+    arr = arr2;
+    //삽입될 위치를 반환함
+    let index = insertIndex(sorted_arr, value);
+    //삽입될 위치에 값을 반환
+    sorted_arr.splice(index, 0, value);
+  }
+  return sorted_arr;
 }
 const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
 console.log(insertSort(arr));
 ```
 
 ### 2.4.4 병합정렬
-* 병합정렬은 분할정복 알고리즘으로, 배열을 반으로 나누어 정렬하고 합치는 방식입니다.
-* Worst와 Best 모두 O(nlogn), 어떤 정렬보다 빠름, 동일 할 수 있음
-* 분할 정복(Divide and Conquer)
 
-* step
+- 병합정렬은 분할정복 알고리즘으로, 배열을 반으로 나누어 정렬하고 합치는 방식입니다.
+- Worst와 Best 모두 O(nlogn), 어떤 정렬보다 빠름, 동일 할 수 있음
+- 분할 정복(Divide and Conquer)
+
+- step
+
 ```
 // 분할
 [5, 10, 66, 77, 54, 32, 11, 15]
@@ -1688,24 +1702,24 @@ console.log(insertSort(arr));
 [5, 10, 11, 15, 32, 54, 66, 77]
 ```
 
-* 구현코드
+- 구현코드
 
-- step 1
+* step 1
 
 ```js
 let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
 
 function 병합정렬(입력배열) {
-    let 입력배열의길이 = 입력배열.length;
-    if (입력배열의길이 <= 1) {
-        return 입력배열;
-    }
-    let 중간값 = parseInt(입력배열의길이 / 2);
-    // ~~(입력배열의길이 / 2)와 같습니다.
-    let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
-    let 그룹둘 = 병합정렬(입력배열.slice(중간값));
+  let 입력배열의길이 = 입력배열.length;
+  if (입력배열의길이 <= 1) {
+    return 입력배열;
+  }
+  let 중간값 = parseInt(입력배열의길이 / 2);
+  // ~~(입력배열의길이 / 2)와 같습니다.
+  let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
+  let 그룹둘 = 병합정렬(입력배열.slice(중간값));
 
-    return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
+  return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
 }
 
 console.log(병합정렬(입력값));
@@ -1717,138 +1731,141 @@ console.log(병합정렬(입력값));
 let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
 
 function 병합정렬(입력배열) {
-    //분할
-    let 입력배열의길이 = 입력배열.length;
-    let 결과값 = [];
-    if (입력배열의길이 <= 1) {
-        return 입력배열;
-    }
-    let 중간값 = parseInt(입력배열의길이 / 2);
-    // ~~(입력배열의길이 / 2)와 같습니다.
-    let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
-    let 그룹둘 = 병합정렬(입력배열.slice(중간값));
+  //분할
+  let 입력배열의길이 = 입력배열.length;
+  let 결과값 = [];
+  if (입력배열의길이 <= 1) {
+    return 입력배열;
+  }
+  let 중간값 = parseInt(입력배열의길이 / 2);
+  // ~~(입력배열의길이 / 2)와 같습니다.
+  let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
+  let 그룹둘 = 병합정렬(입력배열.slice(중간값));
 
-    // return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
+  // return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
 
-    //정복
-    while (그룹하나.length != 0 && 그룹둘.length != 0) {
-        if (그룹하나[0] < 그룹둘[0]) {
-            결과값.push(그룹하나.shift());
-        } else {
-            결과값.push(그룹둘.shift());
-        }
+  //정복
+  while (그룹하나.length != 0 && 그룹둘.length != 0) {
+    if (그룹하나[0] < 그룹둘[0]) {
+      결과값.push(그룹하나.shift());
+    } else {
+      결과값.push(그룹둘.shift());
     }
-    while (그룹하나.length != 0) {
-        결과값.push(그룹하나.shift());
-    }
-    while (그룹둘.length != 0) {
-        결과값.push(그룹둘.shift());
-    }
+  }
+  while (그룹하나.length != 0) {
+    결과값.push(그룹하나.shift());
+  }
+  while (그룹둘.length != 0) {
+    결과값.push(그룹둘.shift());
+  }
 
-    return 결과값;
+  return 결과값;
 }
 
 console.log(병합정렬(입력값));
 ```
 
-* 개선 코드
+- 개선 코드
 
 ```js
 let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
 
 function 병합정렬(입력배열) {
-//분할
-let 입력배열의길이 = 입력배열.length;
-let 결과값 = [];
-if (입력배열의길이 <= 1) {
+  //분할
+  let 입력배열의길이 = 입력배열.length;
+  let 결과값 = [];
+  if (입력배열의길이 <= 1) {
     return 입력배열;
-}
-let 중간값 = parseInt(입력배열의길이 / 2);
-// ~~(입력배열의길이 / 2)와 같습니다.
-let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
-let 그룹둘 = 병합정렬(입력배열.slice(중간값));
+  }
+  let 중간값 = parseInt(입력배열의길이 / 2);
+  // ~~(입력배열의길이 / 2)와 같습니다.
+  let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
+  let 그룹둘 = 병합정렬(입력배열.slice(중간값));
 
-// return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
+  // return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
 
-//정복
-while (그룹하나.length != 0 && 그룹둘.length != 0) {
+  //정복
+  while (그룹하나.length != 0 && 그룹둘.length != 0) {
     if (그룹하나[0] < 그룹둘[0]) {
-        결과값.push(그룹하나.shift());
+      결과값.push(그룹하나.shift());
     } else {
-        결과값.push(그룹둘.shift());
+      결과값.push(그룹둘.shift());
     }
-}
+  }
 
-//개선된 코드
-결과값 = [...결과값, ...그룹하나];
-결과값 = [...결과값, ...그룹둘];
+  //개선된 코드
+  결과값 = [...결과값, ...그룹하나];
+  결과값 = [...결과값, ...그룹둘];
 
-return 결과값;
+  return 결과값;
 }
 
 console.log(병합정렬(입력값));
 ```
 
 ### 2.4.5 퀵정렬
+
 - best - O(nlog2n), worst - O(n\*\*2)
 - 피봇값(pivot)을 기준으로 정렬(피봇값은 처음값, 중간값, 마지막 값)
 - 실무에서는 worst일 경우를 피하기 위해 피봇을 랜덤하게 주는 경우나, 피봇을 2개 사용하는 경우도 있음.
-*   step
-    ```
-    // 원본
-    [66, 77, 54, 32, 10, 5, 11, 15]
 
-    // step 1
-    // 피봇값 : 66
-    [54, 32, 10, 5, 11, 15] + [66] + [77]
+* step
 
-    // step 2
-    // 피봇값 : 54
-    [32, 10, 5, 11, 15] + [54] + [66] + [77]
+  ```
+  // 원본
+  [66, 77, 54, 32, 10, 5, 11, 15]
 
-    // step 3
-    // 피봇값 : 32
-    [10, 5, 11, 15] + [32] + [54] + [66] + [77]
+  // step 1
+  // 피봇값 : 66
+  [54, 32, 10, 5, 11, 15] + [66] + [77]
 
-    // step 4
-    // 피봇값 : 10
-    [5] + [10] + [11, 15] + [32] + [54] + [66] + [77]
+  // step 2
+  // 피봇값 : 54
+  [32, 10, 5, 11, 15] + [54] + [66] + [77]
 
-    // step 5
-    // 피봇값 : 11
-    [5] + [10] + [11] + [15] + [32] + [54] + [66] + [77]
+  // step 3
+  // 피봇값 : 32
+  [10, 5, 11, 15] + [32] + [54] + [66] + [77]
 
-    [5, 10, 11, 15, 32, 54, 66, 77]
-    ```
+  // step 4
+  // 피봇값 : 10
+  [5] + [10] + [11, 15] + [32] + [54] + [66] + [77]
 
-*   구현코드
+  // step 5
+  // 피봇값 : 11
+  [5] + [10] + [11] + [15] + [32] + [54] + [66] + [77]
+
+  [5, 10, 11, 15, 32, 54, 66, 77]
+  ```
+
+* 구현코드
 
 ```js
 let 입력값 = [66, 77, 54, 32, 10, 5, 11, 15];
 
 function 퀵정렬(입력배열) {
-    let 입력배열의길이 = 입력배열.length;
+  let 입력배열의길이 = 입력배열.length;
 
-    if (입력배열의길이 <= 1) {
-        return 입력배열;
+  if (입력배열의길이 <= 1) {
+    return 입력배열;
+  }
+
+  let 피벗값 = 입력배열.shift();
+  let 그룹하나 = [];
+  let 그룹둘 = [];
+
+  for (let i in 입력배열) {
+    if (입력배열[i] < 피벗값) {
+      그룹하나.push(입력배열[i]);
+    } else {
+      그룹둘.push(입력배열[i]);
     }
+  }
+  console.log(
+    `그룹하나 : ${그룹하나}\n그룹둘 : ${그룹둘}\n피벗값 : ${피벗값}\n`
+  );
 
-    let 피벗값 = 입력배열.shift();
-    let 그룹하나 = [];
-    let 그룹둘 = [];
-
-    for (let i in 입력배열) {
-        if (입력배열[i] < 피벗값) {
-            그룹하나.push(입력배열[i]);
-        } else {
-            그룹둘.push(입력배열[i]);
-        }
-    }
-    console.log(
-        `그룹하나 : ${그룹하나}\n그룹둘 : ${그룹둘}\n피벗값 : ${피벗값}\n`
-    );
-
-    return 퀵정렬(그룹하나).concat(피벗값, 퀵정렬(그룹둘));
+  return 퀵정렬(그룹하나).concat(피벗값, 퀵정렬(그룹둘));
 }
 
 퀵정렬(입력값);
@@ -1858,12 +1875,12 @@ function 퀵정렬(입력배열) {
 
 ```js
 data = [
-    [23, 33, 'hello world'],
-    [42, 11, 'hello wo'],
-    [33, 25, 'hello wor'],
-    [11, 12, 'hello worl'],
-    [82, 23, 'hello'],
-]
+  [23, 33, "hello world"],
+  [42, 11, "hello wo"],
+  [33, 25, "hello wor"],
+  [11, 12, "hello worl"],
+  [82, 23, "hello"],
+];
 
 // 0번째 인덱스로 정렬
 data.sort((a, b) => a[0] - b[0]);
@@ -1872,39 +1889,41 @@ data.sort((a, b) => b[0] - a[0]);
 // 2번째 있는 글자의 글자수로 정렬
 data.sort((a, b) => a[2].length - b[2].length);
 
-
 // 국영수 점수와 이름
 data = [
-    [[23, 33, 44], 'licat'],
-    [[42, 11, 12], 'mura'],
-    [[33, 25, 33], 'binky'],
-    [[11, 12, 11], 'gary'],
-    [[82, 23, 22], 'sun'],
-]
+  [[23, 33, 44], "licat"],
+  [[42, 11, 12], "mura"],
+  [[33, 25, 33], "binky"],
+  [[11, 12, 11], "gary"],
+  [[82, 23, 22], "sun"],
+];
 
 // 국영수 점수의 평균이 가장 높은 사람 순으로 사람만 출력해주세요.
 data.sort((a, b) => b[0].reduce() - a[0].reduce());
-data.sort((a, b) => b[0].reduce((a, c) => a + c, 0) - a[0].reduce((a, c) => a + c, 0));
-const sorted_data = data.sort((a, b) => b[0].reduce((a, c) => a + c, 0) - a[0].reduce((a, c) => a + c, 0));
+data.sort(
+  (a, b) => b[0].reduce((a, c) => a + c, 0) - a[0].reduce((a, c) => a + c, 0)
+);
+const sorted_data = data.sort(
+  (a, b) => b[0].reduce((a, c) => a + c, 0) - a[0].reduce((a, c) => a + c, 0)
+);
 
 // 추출은 map입니다.
-sorted_data.map(data => data[1]);
-
-
+sorted_data.map((data) => data[1]);
 
 data = [
-    {name: 'licat', age: 23},
-    {name: 'mura', age: 42},
-    {name: 'binky', age: 33},
-    {name: 'gary', age: 11},
-    {name: 'sun', age: 82}
-]
+  { name: "licat", age: 23 },
+  { name: "mura", age: 42 },
+  { name: "binky", age: 33 },
+  { name: "gary", age: 11 },
+  { name: "sun", age: 82 },
+];
 
 // age 순서대로 정렬하고 싶을 때
 data.sort((a, b) => a.age - b.age);
 ```
 
-* 입사문제로 많이 나오는 데이터 추출 문제
+- 입사문제로 많이 나오는 데이터 추출 문제
+
 ```
 [
   {
@@ -1941,15 +1960,16 @@ data.sort((a, b) => a.age - b.age);
 ```
 
 ### 2.4.7 코딩테스트 나오는 정렬 문제
+
 - 링크: https://school.programmers.co.kr/learn/courses/30/lessons/120835
 
 ```js
-function solution(emergency){
-    // emergency: [3, 76, 24]
-    // sorted: [76, 24, 3]
-    // 우리가 원하는 값: [3, 1, 2]
-    let sorted = emergency.slice().sort((a, b) => b - a);
-    return emergency.map(data => sorted.indexOf(data) + 1);
+function solution(emergency) {
+  // emergency: [3, 76, 24]
+  // sorted: [76, 24, 3]
+  // 우리가 원하는 값: [3, 1, 2]
+  let sorted = emergency.slice().sort((a, b) => b - a);
+  return emergency.map((data) => sorted.indexOf(data) + 1);
 }
 
 solution([3, 76, 24]);
@@ -1957,9 +1977,9 @@ solution([3, 76, 24]);
 
 ## 2.5 페이지 교체 알고리즘
 
-* https://www.notion.so/paullabworkspace/db83d9c4bbe6410ea208e6dc2daff07e
-* 페이지 교체 알고리즘 : 메모리를 효율적으로 사용하기 위해서 어떤 데이터를 메모리에 적재할지 결정하는 알고리즘
-* FIFO(오래된 녀석이 가장 빨리 나간다)
+- https://www.notion.so/paullabworkspace/db83d9c4bbe6410ea208e6dc2daff07e
+- 페이지 교체 알고리즘 : 메모리를 효율적으로 사용하기 위해서 어떤 데이터를 메모리에 적재할지 결정하는 알고리즘
+- FIFO(오래된 녀석이 가장 빨리 나간다)
 
 ```js
 // FIFO(시험에 나오지 않습니다.)
@@ -1982,7 +2002,8 @@ solution([3, 76, 24]);
 ```
 
 ### 2.5.1 LRU 알고리즘 구현
-* 링크: https://school.programmers.co.kr/learn/courses/30/lessons/17680
+
+- 링크: https://school.programmers.co.kr/learn/courses/30/lessons/17680
 
 ```js
 // ["Jeju", "Pangyo", "Jeju", "Pangyo", "Seoul", "LA", "Pangyo", "NewYork"]
@@ -1993,59 +2014,63 @@ solution([3, 76, 24]);
 // ["jeju", "pangyo", "seoul"] miss 5초
 // ...
 
-function solution(cacheSize, cities){
-    let time = 0;
-    let cache = [];
-    for (let i = 0; i < cities.length; i++) {
-        let city = cities[i].toLowerCase();
-        let idx = cache.indexOf(city);
-        if (idx !== -1) {
-            //hit
-            cache.splice(idx, 1);
-            cache.push(city);
-            time += 1;
-        } else {
-            //miss
-            cache.push(city);
-            time += 5;
-            if (cache.length > cacheSize) {
-                cache.shift();
-            }
-        }
+function solution(cacheSize, cities) {
+  let time = 0;
+  let cache = [];
+  for (let i = 0; i < cities.length; i++) {
+    let city = cities[i].toLowerCase();
+    let idx = cache.indexOf(city);
+    if (idx !== -1) {
+      //hit
+      cache.splice(idx, 1);
+      cache.push(city);
+      time += 1;
+    } else {
+      //miss
+      cache.push(city);
+      time += 5;
+      if (cache.length > cacheSize) {
+        cache.shift();
+      }
     }
-    return time;
+  }
+  return time;
 }
 ```
 
 ## 2.6 슬라이딩 윈도우와 투 포인터 알고리즘
 
 ### 2.6.1 슬라이딩 윈도우 알고리즘
-* 슬라이딩 윈도우: 윈도우 사이즈가 고정되어 있고, 이동하면서 최대값이나 최소값을 찾는 알고리즘
+
+- 슬라이딩 윈도우: 윈도우 사이즈가 고정되어 있고, 이동하면서 최대값이나 최소값을 찾는 알고리즘
+
 ```js
 // 다음 중 연속된 3개의 합이 10인 것의 쌍을 출력하는 함수를 만들어주세요.
 // 메서드 체이닝으로 간소화 하진 않겠습니다.
 // zip, reduce사용해서 합을 구하고, filter를 사용해서 10인것을 골라낼 것입니다.
-data = [1, 4, 3, 3, 6, 8, 2, 7, 5, 4, 1, 3, 9, 1, 10]
+data = [1, 4, 3, 3, 6, 8, 2, 7, 5, 4, 1, 3, 9, 1, 10];
 
-function solution(data){
-    let result = [];
-    for (let i = 0; i < data.length - 2; i++) {
-        let sum = data[i] + data[i + 1] + data[i + 2];
-        if (sum === 10) {
-            result.push([data[i], data[i + 1], data[i + 2]]);
-        }
+function solution(data) {
+  let result = [];
+  for (let i = 0; i < data.length - 2; i++) {
+    let sum = data[i] + data[i + 1] + data[i + 2];
+    if (sum === 10) {
+      result.push([data[i], data[i + 1], data[i + 2]]);
     }
-    return result;
+  }
+  return result;
 }
 
 solution(data);
 ```
 
 ### 2.6.2 투 포인터 알고리즘
-* 투 포인터 알고리즘: 2개의 포인터를 이용해서 원하는 결과를 얻는 알고리즘
+
+- 투 포인터 알고리즘: 2개의 포인터를 이용해서 원하는 결과를 얻는 알고리즘
+
 ```js
 // 다음 중 연속된 데이터의 합이 10인 것의 쌍을 출력하는 함수를 만들어주세요.
-[1, 4, 3, 2, 7, 3, 9, 1, 4, 3, 3, 1]
+[1, 4, 3, 2, 7, 3, 9, 1, 4, 3, 3, 1];
 ```
 
 # 3. 카카오 코딩 테스트 문제 풀이
@@ -2080,56 +2105,61 @@ or  10101 (21)
 
 ```js
 // step1
-function solution(n, arr1, arr2){
-    const zip = (a, b) => a.map((v, i) => [v, b[i]]);
-    for ([a, b] of zip(arr1, arr2)) {
-        console.log(a, b);
-    }
+function solution(n, arr1, arr2) {
+  const zip = (a, b) => a.map((v, i) => [v, b[i]]);
+  for ([a, b] of zip(arr1, arr2)) {
+    console.log(a, b);
+  }
 }
 solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
 
 // step2
-function solution(n, arr1, arr2){
-    const zip = (a, b) => a.map((v, i) => [v, b[i]]);
-    for ([a, b] of zip(arr1, arr2)) {
-        console.log(a | b);
-    }
+function solution(n, arr1, arr2) {
+  const zip = (a, b) => a.map((v, i) => [v, b[i]]);
+  for ([a, b] of zip(arr1, arr2)) {
+    console.log(a | b);
+  }
 }
 solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
 
-
 // step3
-function solution(n, arr1, arr2){
-    const result = [];
-    const zip = (a, b) => a.map((v, i) => [v, b[i]]);
-    for ([a, b] of zip(arr1, arr2)) {
-        result.push((a | b).toString(2));
-    }
-    return result;
+function solution(n, arr1, arr2) {
+  const result = [];
+  const zip = (a, b) => a.map((v, i) => [v, b[i]]);
+  for ([a, b] of zip(arr1, arr2)) {
+    result.push((a | b).toString(2));
+  }
+  return result;
 }
 solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
 
 // step4
-function solution(n, arr1, arr2){
-    const result = [];
-    const zip = (a, b) => a.map((v, i) => [v, b[i]]);
-    for ([a, b] of zip(arr1, arr2)) {
-        result.push((a | b).toString(2).replace(/1/g, '#').replace(/0/g, ' '));
-    }
-    return result;
+function solution(n, arr1, arr2) {
+  const result = [];
+  const zip = (a, b) => a.map((v, i) => [v, b[i]]);
+  for ([a, b] of zip(arr1, arr2)) {
+    result.push((a | b).toString(2).replace(/1/g, "#").replace(/0/g, " "));
+  }
+  return result;
 }
 solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
 
 // step5
 function solution(n, arr1, arr2) {
-    answer = []
-    for (let i = 0; i < n; i++){
-        answer.push((arr1[i] | arr2[i]).toString(2).padStart(n, '0').replace(/1/g, '#').replace(/0/g, ' '))
-    }
-    return answer
+  answer = [];
+  for (let i = 0; i < n; i++) {
+    answer.push(
+      (arr1[i] | arr2[i])
+        .toString(2)
+        .padStart(n, "0")
+        .replace(/1/g, "#")
+        .replace(/0/g, " ")
+    );
+  }
+  return answer;
 }
 
-solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
+solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
 ```
 
 ## 3.2 다트게임 문제
@@ -2149,4 +2179,327 @@ solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
 for (let s of '1S2D3T'){
     console.log(s);
 }
+
+//////////////////////////////
+
+const dart = '1D2S10S*';
+const regex = /(\d+)([SDT])([\*\#]?)/g;
+const dartResult = dart.match(regex);
+
+dartResult
+
+//////////////////////////////
+
+const dart = '1D2S10S*';
+const regex = /(\d+)([SDT])([\*\#]?)/g;
+const dartResult = [...dart.matchAll(regex)].map(match => match.slice(1));
+
+dartResult
+
+//////////////////////////////
+
+
+// step1
+// 5분 ~ 10분
+testcase = [
+    "1S2D*3T", // 37
+    "1D2S#10S", // 9
+    "1D2S0T", // 3
+];
+
+function solution(dartResult){
+    let answer = [];
+    let temp = 0; // 각 단계의 결과를 계산
+    let result = 0; // 전체 단계의 결과를 합산
+    for (let i = 0; i < dartResult.length; i++){
+        if (dartResult[i] >= 0 && dartResult[i] <= 9){
+            // 10점을 고려하지 않음
+            // 문자와 숫자 비교 가능
+            temp = parseInt(dartResult[i]);
+        } else if (dartResult[i] == 'S'){
+            answer.push(temp);
+        } else if (dartResult[i] == 'D'){
+            answer.push(temp**2);
+        } else if (dartResult[i] == 'T'){
+            answer.push(temp**3);
+        }
+    }
+    return answer
+}
+
+for (let dart of testcase){
+    console.log(solution(dart));
+}
+
+// step2
+testcase = [
+    "1S2D*3T", // 37
+    "1D2S#10S", // 9
+    "1D2S0T", // 3
+];
+
+function solution(dartResult){
+    let answer = [];
+    let temp = 0; // 각 단계의 결과를 계산
+    let result = 0; // 전체 단계의 결과를 합산
+    for (let i = 0; i < dartResult.length; i++){
+        if (dartResult[i] >= 0 && dartResult[i] <= 9){
+            // 10점을 고려하지 않음
+            // 문자와 숫자 비교 가능
+            temp = parseInt(dartResult[i]);
+        } else if (dartResult[i] == 'S'){
+            answer.push(temp);
+        } else if (dartResult[i] == 'D'){
+            answer.push(temp**2);
+        } else if (dartResult[i] == 'T'){
+            answer.push(temp**3);
+        } else if (dartResult[i] == '*'){
+            answer[answer.length - 1] *= 2 // 현재 점수를 2배
+            if (answer.length > 1){
+                answer[answer.length - 2] *= 2 // 이전 점수를 2배
+            }
+        } else if (dartResult[i] == '#'){
+            answer[answer.length - 1] *= -1
+        }
+    }
+    return answer.reduce((a, c) => a + c, 0)
+}
+
+for (let dart of testcase){
+    console.log(solution(dart));
+}
+
+// step3
+testcase = [
+    "1S2D*3T", // 37
+    "1D2S#10S", // 9
+    "1D2S0T", // 3
+];
+
+function solution(dartResult){
+    let answer = [];
+    let temp = 0; // 각 단계의 결과를 계산
+    let result = 0; // 전체 단계의 결과를 합산
+    for (let i = 0; i < dartResult.length; i++){
+        if (dartResult[i] >= 0 && dartResult[i] <= 9){
+            if (dartResult[i] == 1 && dartResult[i + 1] == 0){
+                temp = 10;
+                // 다음 턴으로 넘어갑니다.
+                // 다음 순회를 건너뛰게 한다.
+                i++;
+            } else {
+                temp = parseInt(dartResult[i]);
+            }
+        } else if (dartResult[i] == 'S'){
+            answer.push(temp);
+        } else if (dartResult[i] == 'D'){
+            answer.push(temp**2);
+        } else if (dartResult[i] == 'T'){
+            answer.push(temp**3);
+        } else if (dartResult[i] == '*'){
+            answer[answer.length - 1] *= 2 // 현재 점수를 2배
+            if (answer.length > 1){
+                answer[answer.length - 2] *= 2 // 이전 점수를 2배
+            }
+        } else if (dartResult[i] == '#'){
+            answer[answer.length - 1] *= -1
+        }
+    }
+    return answer.reduce((a, c) => a + c, 0)
+}
+
+for (let dart of testcase){
+    console.log(solution(dart));
+}
+
+
+for (let i = 0; i < 10; i++){
+    if (i == 5){
+        i++;
+    }
+    console.log(i);
+}
+
+// 번외편
+// 정답은 아닙니다. 정답을 만들려면 여기에 스타상과 아차상을 고려해야 합니다.
+function solution(dartResult) {
+    let 승수 = { S: 1, D: 2, T: 3 };
+    let answer = dartResult
+        .match(/([0-9]|10)([SDT])([\*\#]?)/g)
+        .map((item) => {
+            return parseInt(item[0]) ** 승수[item[1]];
+        });
+    return answer.reduce((a, c) => a + c);
+}
+
+console.log(solution("1S2D3T"));
+```
+
+## 3.3 오픈채팅방(19년)
+- 링크: https://school.programmers.co.kr/learn/courses/30/lessons/42888?language=javascript
+
+```js
+{
+    '아이디': '닉네임',
+    '아이디': '닉네임',
+    '아이디': '닉네임',
+    '아이디': '닉네임'
+    // 이렇게 관리해서 나중에 문자열 조합을 통해
+    // 문제에서 원하는 결과물을 출력
+}
+
+// 위 데이터를 가지고
+
+[
+"Prodo님이 들어왔습니다.", 
+"Ryan님이 들어왔습니다.", 
+"Prodo님이 나갔습니다.", 
+"Prodo님이 들어왔습니다."
+]
+
+
+// step1
+// 5분 ~ 10분
+const record = [
+    "Enter uid1234 Muzi", 
+    "Enter uid4567 Prodo",
+    "Leave uid1234",
+    "Enter uid1234 Prodo",
+    "Change uid4567 Ryan"
+]
+
+function solution(record){
+    let answer = [];
+    let user = {};
+
+    for (const i of record){
+        let [상태, 아이디, 닉네임] = i.split(' ');
+        answer.push([상태, 아이디, 닉네임]);
+    }
+
+    return answer;
+}
+
+solution(record)
+
+// step2
+const record = [
+    "Enter uid1234 Muzi", 
+    "Enter uid4567 Prodo",
+    "Leave uid1234",
+    "Enter uid1234 Prodo",
+    "Change uid4567 Ryan"
+]
+
+function solution(record){
+    let answer = [];
+    let user = {};
+
+    for (const i of record){
+        let [상태, 아이디, 닉네임] = i.split(' ');
+        if (상태 === 'Enter') {
+            user[아이디] = 닉네임;
+            answer.push([아이디, '님이 들어왔습니다.']);
+        } else if (상태 === 'Change') {
+            user[아이디] = 닉네임;
+        } else if (상태 === 'Leave') {
+            answer.push([아이디, '님이 나갔습니다.']);
+        }
+    }
+
+    answer = answer.map(([아이디, 상태]) => `${user[아이디]}${상태}`);
+
+    return answer;
+}
+
+solution(record)
+```
+
+## 3.4 실패율(19년)
+
+- 링크: https://school.programmers.co.kr/learn/courses/30/lessons/42889?language=javascript
+
+```js
+// 스테이지에 도달했으나 아직 클리어하지 못한 플레이어의 수 / 스테이지에 도달한 플레이어 수
+
+// 실패율 === 아직 클리어 못한 플레이어의 수 / 도달한 플레이어 수
+// 전체 스테이지의 개수 N
+// 스테이지의 번호가 담긴 배열 stages가 매개변수
+
+// 실패율이 높은 스테이지부터 내림차순으로 스테이지의 번호가 담겨있는 배열을 return 하도록 solution 함수
+// 만약 실패율이 같은 스테이지가 있다면 작은 번호의 스테이지가 먼저 오도록 하면 된다. (오름차순)
+
+// N	stages                  	result
+// 5	[2, 1, 2, 6, 2, 4, 3, 3]	[3, 4, 2, 1, 5]
+// 4	[4, 4, 4, 4, 4]	            [4, 1, 2, 3]
+
+// 스테이지에 도달한 사람의 수
+// 1stage === 1
+// 2stage === 3
+// 3stage === 2
+// 4stage === 1
+// 5stage === 0
+
+// 실패율
+// 1stage === 1/8
+// 2stage === 3/7 === 3/(8-1)
+// 3stage === 2/4 === 2/(7-3)
+// 4stage === 1/2 === 1/(4-2)
+// 5stage === 0/1 === 0/(2-1)
+
+// step1 
+// 도달한 사람만 구해봅니다.
+function solution(N, stages) {
+    let 실패율 = [];
+    let 유저수 = stages.length;
+
+    for (let i = 1; i < N+1; i++){
+        let 도달한사람수 = stages.filter(user => user === i).length;
+        실패율.push([도달한사람수]);
+    }
+    return 실패율;
+}
+
+// 분자를 다 구했습니다.
+// 다음 스탭에서 분모를 구해야 합니다.
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3])
+
+// step2
+function solution(N, stages) {
+    let 실패율 = [];
+    let 유저수 = stages.length;
+
+    for (let i = 1; i < N+1; i++){
+        let 도달한사람수 = stages.filter(user => user === i).length;
+        실패율.push([도달한사람수 / 유저수]);
+        console.log(도달한사람수, 유저수)
+        유저수 -= 도달한사람수;
+    }
+    return 실패율;
+}
+
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3])
+
+// step3 정렬
+function solution(N, stages) {
+    let 실패율 = [];
+    let 유저수 = stages.length;
+
+    for (let i = 1; i < N+1; i++){
+        let 도달한사람수 = stages.filter(user => user === i).length;
+        실패율.push(
+            {
+                stage: i,
+                rate: 도달한사람수 / 유저수
+            }
+        );
+        console.log(도달한사람수, 유저수)
+        유저수 -= 도달한사람수;
+    }
+    실패율.sort((a, b) => b.rate - a.rate);
+
+    return 실패율.map(data => data.stage);
+}
+
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3]);
 ```
