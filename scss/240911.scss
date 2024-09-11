@@ -1,0 +1,382 @@
+// 반복되는 코드를 만들지 말라(Don't Repeat Yourself - 앤드루 헌트, 데이비드 토머스의 실용주의 프로그래머)
+// 중복된 코드로 인한 혼란
+// 작업 분량의 증가로 인한 효율성 악화
+
+// 1. 밴더 프리픽스를 포함한 border, gradient 등의 코드로 효율성 극대화 할 수 있음
+// 2. less보다 많은 기능을 보유하고 있음(그러나 각 장단점이 있음)
+// 3. reset.css 같은 경우에도 포함해 사용할 수 있음.(포함하지 않는 경우도 있음, 작업의 일관성)
+
+// 한 줄 주석입니다. (한 줄 주석은 컴파일되지 않습니다.)
+/* 두 줄 주석입니다. */
+
+// 기본 CSS에서 가능합니다.
+
+@import url(a.scss);
+@import url(b.scss);
+
+.one {
+  color: red;
+  .two {
+    color: blue;
+    .three {
+      color: green;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+  li {
+    display: inline-block;
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  background: {
+    color: #f00;
+    image: url("icon.png");
+    position: center;
+    repeat: no-repeat;
+  }
+}
+
+// 일반 CSS에서도 네이스팅 + & 사용 가능(24년 9월 확인)
+// .box {
+//     &:focus{} // 가상선택자
+//     &:hover{}
+//     &:active{}
+//     &:first-child{}
+//     &:nth-child(2){}
+//     &::after{} // 가상요소
+//     &::before{}
+// }
+.one {
+  .box {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    transition: all 0.3s;
+    &:hover {
+      height: 200px;
+      width: 200px;
+      background-color: blue;
+    }
+  }
+}
+
+// 일반 CSS에서도 네이스팅 + & 사용 가능(23년 10월 즈음에 대부분의 브라우저에서 도입)
+// 대부분의 브라우저에서 도입을 했다하여 실무에서 사용이 가능할까?
+// 회사마다 다릅니다. 포털 입장에서는 0.1%도 매우 큰 수치입니다.
+// 익스플로러는 지원을 안하고, 모바일 쪽도 지원을 아직 안하는 곳이 있어서 사용을 못하는 경우가 있을 수 있습니다.
+// .box {
+//     &:focus{} // 가상선택자
+//     &:hover{}
+//     &:active{}
+//     &:first-child{}
+//     &:nth-child(2){}
+//     &::after{} // 가상요소
+//     &::before{}
+// }
+.one {
+  .box {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    transition: all 0.3s;
+    &:hover {
+      height: 200px;
+      width: 200px;
+      background-color: blue;
+    }
+  }
+}
+
+// 부모 선택자 엠퍼센트
+ul {
+  li {
+    &:hover {
+      background: white;
+      cursor: pointer;
+    }
+
+    &:last-child {
+      border: 2px solid black;
+    }
+  }
+}
+
+ol {
+  border: 1px solid black;
+
+  li {
+    &:nth-child(1) {
+      color: red;
+    }
+
+    &:nth-child(2) {
+      color: green;
+    }
+
+    &:nth-child(3) {
+      color: blue;
+    }
+  }
+}
+
+.box {
+  &-yellow {
+    background: yellow;
+  }
+  &-red {
+    background: red;
+  }
+  &-blue {
+    background: blue;
+  }
+}
+
+// 접두사를 사용할 수는 없습니다.
+// .box {
+//     hello-&-yellow {
+//         background: yellow;
+//     }
+//     hello-&-red {
+//         background: red;
+//     }
+//     hello-&-blue {
+//         background: blue;
+//     }
+// }
+
+// 한글 변수도 사용할 수 있지만 권장하진 않습니다.
+// 프로젝트 규모가 커질수록 한글 변수명을 사용하면 코드를 읽기 쉬웠습니다.
+
+$one: #000000;
+$two: #999999;
+$three: #ffffff;
+
+.four {
+  color: $one;
+}
+
+.five {
+  color: $two;
+}
+
+.six {
+  color: $three;
+}
+
+// 실무에서 이런 변수를 어디서 사용할까요?
+// 예를 들어
+// 1. 경로명
+// 2. 폰트명
+// 3. 색상
+// 4. 파일명
+// 5. 폰트 사이즈, 여백, 미디어 쿼리의 넓이, 높이 등등
+
+$path: "./asset/images/";
+$name: "apple1.png";
+
+// .test {
+//   background-image: url('#{$path}#{$name}');
+// }
+
+// .test {
+//     background-image: url('hello' + $path + $name);
+// }
+
+.test {
+  background-image: url($path + $name);
+}
+
+//색상
+$red: #ee4444;
+$black: #222;
+$bg-color: #3e5e9e;
+$link-color: red;
+$p-color: #282a36;
+
+//폰트사이즈
+$font-p: 13px;
+$font-h1: 28px;
+
+//폰트
+$base-font: "Noto Sans KR", sans-serif;
+
+// lists
+$sizes: 40px, 50px, 80px;
+$valid-sides: top, bottom, left, right;
+
+//maps
+$font-sizes: (
+  "h1": 45px,
+  "h2": 19px,
+  "p": 16px,
+);
+$font-sizes-test: (
+  "one": #fff,
+  "two": #ff0,
+  "three": #f00,
+);
+
+// 0부터 시작하지 않습니다.
+.title1 {
+  font-size: nth($sizes, 1);
+}
+
+// 마이너스 인덱싱도 가능합니다.
+.title2 {
+  font-size: nth($sizes, -1);
+}
+
+.title3 {
+  font-size: map-get($font-sizes, "h2");
+}
+
+.title4 {
+  font-size: map-get($font-sizes-test, "three");
+}
+
+$valid-sides: top, bottom, left, right;
+//$valid-sides: top, bottom, left, right;
+.test2 {
+  margin-#{nth($valid-sides, 1)}: nth($sizes, 1);
+  margin-#{nth($valid-sides, 2)}: nth($sizes, 1);
+  background-color: map-get($font-sizes-test, "three");
+}
+
+// .test2 {
+//     // nth를 함수로 인식하지 못하고 있습니다. nth를 함수로 인식하게 하려면 nth를 한 번 감싸주어야 합니다.
+//     margin-nth($valid-sides, 1): nth($sizes, 1);
+//     margin-nth($valid-sides, 2): nth($sizes, 1);
+//     background-color: map-get($font-sizes-test, "three");
+// }
+
+// 전역 변수
+$value: blue;
+
+.one {
+  // 지역 변수
+  $value: red;
+  .two {
+    color: $value;
+  }
+}
+
+.three {
+  color: $value;
+}
+
+@debug 100 > 50; // true
+@debug 10px <= 17px; // true
+@debug 10px == 17px; // false
+@debug 10px != 17px; // true
+@debug 96px >= 30px; // true
+@debug 1000ms <= 1s; // true
+
+// 숫자
+@debug 1px == 1px; // true
+@debug 1px != 1em; // true
+@debug 1 != 1px; // true
+@debug 96px == 1in; // true
+
+// 문자
+@debug "Poppins" == Poppins; // true
+@debug "Open Sans" != "Roboto"; // true
+
+// 색상
+@debug rgba(53, 187, 169, 1) == #35bba9; // true
+@debug rgba(179, 115, 153, 0.5) != rgba(179, 115, 153, 0.8); // true
+
+// 리스트
+@debug (5px 7px 10px) != (5px, 7px, 10px); // true
+// @debug (5px 7px 10px) != [5px 7px 10px]; // true
+@debug (5px 7px 10px) == (5px 7px 10px); // true
+
+// 리스트
+// (5px 7px 10px)와 (5px, 7px, 10px)은 같은 리스트인데 동일한 형태로 표현되지는 않습니다. (5px 7px 10px) 각각의 개별 값으로 처리됩니다. (5px, 7px, 10px) 리스트 안에 리스트로 처리됩니다.
+// (5px, 7px, 10px)과 [5px, 7px, 10px] 동일하게 처리됩니다.
+
+// 1. 하나는 콤마가 없고, 하나는 있습니다. 그래서 다르게 처리됩니다.
+@debug (5px 7px 10px) != (5px, 7px, 10px); // true
+
+// 하나가 대괄호여서 주석처리 해놓은 것입니다. 괄호만 다른 것이지 동일한 매서드로 처리가 가능합니다.
+// @debug (5px 7px 10px) != [5px 7px 10px]; // true
+
+// 괄호와 값과 콤마여부가 동일해서 true입니다.
+@debug (5px 7px 10px) == (5px 7px 10px); // true
+
+// @debug nth([5px 7px 10px], 1); 동일하게 실행 됩니다.
+
+@for $i from 1 through 5 {
+    .photo-box:nth-child(#{$i}) {
+        background-image: url("../assets/phoster#{$i}.png");
+    }
+}
+
+// Scss - for문
+// for문을 이용해 nth-선택자에게 각각의 image를 배경에 넣어준다.
+@for $i from 1 through 5 {
+    .photo-box:nth-child(#{$i}) {
+        background-image: url("../assets/phoster#{$i}.png");
+    }
+}
+
+// 범위 1이상 5이하
+// for문에서 1부터 5까지 반복하라는 의미입니다. 총 5번 반복되면서 코드가 실행된다.
+// 만약 from 3 throught 8 이라면 3에서 8까지 6번 실행된다.
+
+
+@for $i from 10 through 15 {
+    .photo-box:nth-child(#{$i}) {
+        background-image: url("../assets/img_#{$i}.png");
+    }
+}
+
+$url: '127.0.0.1/assets/';
+
+// 현업에서 사용하는 믹스인
+@mixin iconBg($path, $start, $end) {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    @for $i from $start through $end {
+        &:nth-child(#{$i}) {
+            background-image:url($url + '#{$path}#{$i}.png');
+        }
+    }
+}
+
+.test {
+    @include iconBg('img/', 1, 5);
+}
+
+// Sass - each문
+// color-palette 리스트에 들어있는 색상을 each문을 사용하여 background에 색상값을 넣어준다.
+$color-palette: #dad5d2 #3a3532 #375945 #5b8767 #a6c198 #dbdfc8;
+
+@each $color in $color-palette {
+    $i: index($color-palette, $color); //index는 list의 내장함수
+
+    .color-circle:nth-child(#{$i}) {
+        background: $color;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+}
+
+// https://sass-lang.com/playground/
+// $color-palette: #dad5d2 #3a3532 #375945 #5b8767 #a6c198 #dbdfc8;
+// $color: #375945;
+// @debug index($color-palette, $color);

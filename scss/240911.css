@@ -1,0 +1,263 @@
+@charset "UTF-8";
+/* 두 줄 주석입니다. */
+@import url(a.scss);
+@import url(b.scss);
+.one {
+  color: red;
+}
+.one .two {
+  color: blue;
+}
+.one .two .three {
+  color: green;
+}
+
+ul {
+  list-style: none;
+}
+ul li {
+  display: inline-block;
+}
+ul li a {
+  text-decoration: none;
+}
+ul li a:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  background-color: #f00;
+  background-image: url("icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.one .box {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  transition: all 0.3s;
+}
+.one .box:hover {
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+}
+
+.one .box {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  transition: all 0.3s;
+}
+.one .box:hover {
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+}
+
+ul li:hover {
+  background: white;
+  cursor: pointer;
+}
+ul li:last-child {
+  border: 2px solid black;
+}
+
+ol {
+  border: 1px solid black;
+}
+ol li:nth-child(1) {
+  color: red;
+}
+ol li:nth-child(2) {
+  color: green;
+}
+ol li:nth-child(3) {
+  color: blue;
+}
+
+.box-yellow {
+  background: yellow;
+}
+.box-red {
+  background: red;
+}
+.box-blue {
+  background: blue;
+}
+
+.four {
+  color: #000000;
+}
+
+.five {
+  color: #999999;
+}
+
+.six {
+  color: #ffffff;
+}
+
+.test {
+  background-image: url("./asset/images/apple1.png");
+}
+
+.title1 {
+  font-size: 40px;
+}
+
+.title2 {
+  font-size: 80px;
+}
+
+.title3 {
+  font-size: 19px;
+}
+
+.title4 {
+  font-size: #f00;
+}
+
+.test2 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #f00;
+}
+
+.one .two {
+  color: red;
+}
+
+.three {
+  color: blue;
+}
+
+.photo-box:nth-child(1) {
+  background-image: url("../assets/phoster1.png");
+}
+
+.photo-box:nth-child(2) {
+  background-image: url("../assets/phoster2.png");
+}
+
+.photo-box:nth-child(3) {
+  background-image: url("../assets/phoster3.png");
+}
+
+.photo-box:nth-child(4) {
+  background-image: url("../assets/phoster4.png");
+}
+
+.photo-box:nth-child(5) {
+  background-image: url("../assets/phoster5.png");
+}
+
+.photo-box:nth-child(1) {
+  background-image: url("../assets/phoster1.png");
+}
+
+.photo-box:nth-child(2) {
+  background-image: url("../assets/phoster2.png");
+}
+
+.photo-box:nth-child(3) {
+  background-image: url("../assets/phoster3.png");
+}
+
+.photo-box:nth-child(4) {
+  background-image: url("../assets/phoster4.png");
+}
+
+.photo-box:nth-child(5) {
+  background-image: url("../assets/phoster5.png");
+}
+
+.photo-box:nth-child(10) {
+  background-image: url("../assets/img_10.png");
+}
+
+.photo-box:nth-child(11) {
+  background-image: url("../assets/img_11.png");
+}
+
+.photo-box:nth-child(12) {
+  background-image: url("../assets/img_12.png");
+}
+
+.photo-box:nth-child(13) {
+  background-image: url("../assets/img_13.png");
+}
+
+.photo-box:nth-child(14) {
+  background-image: url("../assets/img_14.png");
+}
+
+.photo-box:nth-child(15) {
+  background-image: url("../assets/img_15.png");
+}
+
+.test {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.test:nth-child(1) {
+  background-image: url("127.0.0.1/assets/img/1.png");
+}
+.test:nth-child(2) {
+  background-image: url("127.0.0.1/assets/img/2.png");
+}
+.test:nth-child(3) {
+  background-image: url("127.0.0.1/assets/img/3.png");
+}
+.test:nth-child(4) {
+  background-image: url("127.0.0.1/assets/img/4.png");
+}
+.test:nth-child(5) {
+  background-image: url("127.0.0.1/assets/img/5.png");
+}
+
+.color-circle:nth-child(1) {
+  background: #dad5d2;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.color-circle:nth-child(2) {
+  background: #3a3532;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.color-circle:nth-child(3) {
+  background: #375945;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.color-circle:nth-child(4) {
+  background: #5b8767;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.color-circle:nth-child(5) {
+  background: #a6c198;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.color-circle:nth-child(6) {
+  background: #dbdfc8;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}/*# sourceMappingURL=240911.css.map */

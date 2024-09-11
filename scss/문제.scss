@@ -1,0 +1,33 @@
+// 문제 입니다. 아래와 같이 CSS가 만들어지도록 SCSS를 만들어주세요.
+// .test1 {
+//     font-size: 45px;
+//     background-color: #f00;
+// }
+
+// $valid-sides
+// top, bottom, left, right
+// test2 {
+//     margin-top: 40px;
+//     margin-bottom: 40px;
+//     background-color: #f00;
+// }
+$font-sizes: 20px, 30px, 45px;
+
+$background-color-red:#f00;
+
+$margin-test: (
+    "top": 40px,
+    "right":40px,
+    "bottom":40px,
+    "left":40px
+);
+.test1 {
+    font-size: nth($font-sizes, -1);
+    background-color: $background-color-red;
+}
+
+.test2 {
+    margin-top: map-get($margin-test, "top");
+    margin-bottom: map-get($margin-test, "bottom");
+    background-color: $background-color-red;
+}
